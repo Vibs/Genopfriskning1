@@ -1,63 +1,31 @@
-public class ProperCase{
-    
-    public String ændrString(String brugersSætning){
-        String ændretBrugerString = "";
-        String fundetOrd = "";
+import java.util.Arrays;
+
+public class ProperCase
+{
+    public String formatString(String stringToFormat)
+    {
+        String formattedString = ""; // String som skal returnes
+        String[] words = stringToFormat.split(" ");
         
-        int b = 0;
-        for(int i = 0; i < brugersSætning.length(); b++){
-            // while til at finde ord for ord og gemme i fundetOrd
-            while(true){
-                if(brugersSætning.charAt(i) == ' ' || i == brugersSætning.length())
-                {
-                    i++;
-                    break;
-                }
-                // én char ad gangen bliver tilføjet til fundetOrd-stringen
-                fundetOrd = fundetOrd + Character.toString(brugersSætning.charAt(i));
-                i++;
-            }
-            
-            // check if upperCase
-            boolean fundetOrdErMedStoreBogstaver = true;
-            
-            for(int j = 0; j < fundetOrd.length(); j++){
-                
-                if(!(Character.isUpperCase(fundetOrd.charAt(j))))
-                {
-                    fundetOrdErMedStoreBogstaver = false;
-                }
-            }
-            
-            if(fundetOrdErMedStoreBogstaver){
-                // Ord, som udelukkende er skrevet med store bogstaver, skal ikke ændres.
-            }
-            else if(fundetOrd.length() > 3)
+        for(String s : words)
+        {
+            if(s.toUpperCase().equals(s))
             {
-                
-                // Ord på mere end 3 bogstaver skal skrives med småt, dog med stort begyndelsesbogstav.
-                fundetOrd = fundetOrd.toLowerCase();
-                
-                String konverteretFundetOrd = Character.toString(Character.toUpperCase(fundetOrd.charAt(0)));
-                
-                for(int k = 1; k < fundetOrd.length(); k++){
-                    
-                    konverteretFundetOrd = konverteretFundetOrd + fundetOrd.charAt(k);
-                }
-                
-                fundetOrd = konverteretFundetOrd;
+                formattedString = formattedString + s + " ";
+                continue; // kan enten skrive dette ELLER bare skrive else foran den næste if
             }
-            else // if(fundetOrd.length() <= 3)
+            if(s.length() > 3)
             {
-                
-                // Ord på max. 3 bogstaver skal skrives med småt.
-                fundetOrd = fundetOrd.toLowerCase();
+                formattedString =
+                        formattedString + s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase() + " ";
             }
-            
-            ændretBrugerString = ændretBrugerString + fundetOrd + " ";
-            fundetOrd = "";
+            else
+            {
+                formattedString = formattedString + s.toLowerCase() + " ";
+                // s = s.toLowerCase();
+            }
         }
-        return ændretBrugerString;
+        return formattedString;
     }
 }
 

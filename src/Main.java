@@ -1,74 +1,79 @@
 import java.util.*;
 
-public class Main{
-    
+public class Main
+{
     public static void main(String []args)
     {
+        Scanner scanner = new Scanner(System.in);
+        
+        // EXCERCISE 1
+        System.out.println("\n       EXCERCISE 1\n");
+        
+        ArrayList<String> vibesStringArrayList = new ArrayList<String>(Arrays.asList("Hej", "String", "Gruppe 5",
+                "sidste String"));
+        
+        Excercise1 excercise1 = new Excercise1();
+    
+        System.out.print("Which String would you like to check is in the ArrayList?: ");
+        String stringToCheck = scanner.nextLine();
+        
+        excercise1.isStringOnList(stringToCheck, vibesStringArrayList);
         
         
-        // Opgave 1
-        System.out.println("\nOPGAVE 1\n\n\n");
+        // EXCERCISE 2
+        System.out.println("\n       EXCERCISE 2\n");
         
-        ArrayList<String> vibesStringArrayList = new ArrayList<String>();
-        vibesStringArrayList.add("Hej");
-        vibesStringArrayList.add("Gruppe 5");
+        Library library = new Library();
         
-        Opgave1 opgave1 = new Opgave1();
+        library.addBog(new Book("Java1", 123, 2007));
+        library.addBog(new Book("Peter Plys", 1236876, 2009));
+        library.addBog(new Book("Harry Potter", 123653, 2004));
+    
+        System.out.print("Which book would you like to check is on the list?\n" +
+                                   "Name of the book: ");
+        String userBookName = scanner.nextLine();
+        System.out.print("ISBN-number of the book: ");
+        int userBookISBN = scanner.nextInt();
+        System.out.print("Release date of the book: ");
+        int userBookReleaseDate = scanner.nextInt();
         
-        opgave1.doesArraylistContainString("Dinmor", vibesStringArrayList);
-        opgave1.doesArraylistContainString("Johnny", vibesStringArrayList);
-        opgave1.doesArraylistContainString("Hej", vibesStringArrayList);
+        library.isISBNonList(new Book(userBookName, userBookISBN, userBookReleaseDate));
         
+        // EXCERCISE 3
+        System.out.println("\n       EXCERCISE 3\n");
         
-        // Opgave 2
-    /* toString-TEST-udskrivning
-    Bog vibesBog = new Bog("VibesLækreBog", 246762487, 2020);
-    System.out.println(vibesBog);
-    */
-        System.out.println("\nOPGAVE 2\n\n\n");
+        Grass grass = new Grass();
         
-        BibliotekOpgave bibliotek = new BibliotekOpgave();
+        System.out.print("What is the current height of your grass?: ");
+        double currentLength = scanner.nextDouble();
+        System.out.print("What is the maximum height you want you grass to be?: ");
+        double lengthLimit = scanner.nextDouble();
         
-        bibliotek.addBog(new Bog("Java1", 123, 2007));
-        bibliotek.addBog(new Bog("Peter Plys", 1236876, 2009));
-        bibliotek.addBog(new Bog("Harry Potter", 123653, 2004));
+        System.out.println("You have to cut your grass in " + grass.calculateDaysToCut(currentLength, lengthLimit) +
+                                   " days.\n");
         
-        // test af erISBNPåListe:
-        bibliotek.erISBNPåListe(new Bog("Star wars", 1236876, 2008));
+        // EXCERCISE 4:
+        System.out.println("\n       EXCERCISE 4\n");
         
-        // Opgave 3
-        // Test af dageTilGræsslåning-metoden (Græsset skal slås, inden værdien overstiges)
-        System.out.println("\nOPGAVE 3\n\n");
-        Græs græs = new Græs();
-        Scanner scan = new Scanner(System.in);
+        Square square = new Square();
+    
+        System.out.print("How big do you want the sides of your square to be?: ");
+        int sideLength = scanner.nextInt();
+        System.out.print("Which symbol would you like to use?: ");
+        String symbol = scanner.next();
         
-        boolean harBrugerTastetForkert = true;
+        square.printSquare(sideLength, symbol);
         
+        // EXCERCISE 5:
+        System.out.println("\n       EXCERCISE 5\n");
         
-        System.out.print("Hvor højt er dit græs lige nu?: ");
-        double currentLængde = scan.nextDouble();
-        System.out.print("Hvor højt skal dit græs være før du vil slå det?: ");
-        double længdeLimit = scan.nextDouble();
-        
-        System.out.println("Du skal slå dit græs om " + græs.dageTilGræsslåning(currentLængde, længdeLimit) + " dage.");
-        
-        // Opgave 4:
-        System.out.println("\nOPGAVE 4\n\n\n");
-        
-        Kvadrat kvadrat = new Kvadrat();
-        
-        kvadrat.printKvadrat(8, '#');
-        
-        // Opgave 5:
-        // MEN RUNES ER SUPER MEGET BEDRE!!!! SÅ KIG PÅ DEN!
-        System.out.println("\nOPGAVE 5\n\n\n");
-        System.out.println("Hvad er din sætning?:");
-        String rettelse = scan.nextLine();
-        String brugersSætning = scan.nextLine();
+        System.out.print("Which sentence would you like to convert?: ");
+        String catcher = scanner.nextLine(); // catcher et linjeskift, I think
+        String userSentence = scanner.nextLine();
         
         ProperCase properCase = new ProperCase();
-        
-        System.out.println(properCase.ændrString(brugersSætning));
+    
+        System.out.println(properCase.formatString(userSentence));
         
     }
     

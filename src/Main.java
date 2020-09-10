@@ -75,6 +75,23 @@ public class Main
     
         System.out.println(properCase.formatString(userSentence));
         
+        // EXCERCISE 6:
+        System.out.println("\n       EXCERCISE 6\n");
+        
+        System.out.println("Please enter 5 words (press 'Enter' after each word): ");
+        
+        String[] sA = new String[5];
+        
+        for(int i = 0; i < 5; i++)
+        {
+            sA[i] = scanner.nextLine();
+        }
+        
+        Sorting sorting = new Sorting();
+        
+        String[] sSA = new String[5];
+        sSA = sorting.sortArrayAlphabetically(sA);
+        
     }
     
     

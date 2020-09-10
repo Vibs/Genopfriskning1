@@ -1,15 +1,21 @@
 public class Sorting
 {
-    public String sortStrings(String s)
+    public String[] sortArrayAlphabetically(String[] sA)
     {
-        String sortedString = ""; // String som skal returnes
-        String[] words = s.split(" ");
+        String temp = "";
         
-        
-        
-        
-        return sortedString;
+        for(int i = 0; i < sA.length; i++) // hver gang loopet kører, bliver det rette ord sat på plads i
+        {
+            for(int j = i + 1; j < sA.length; j++) // tjekker hvert ord efter index i burde stå på index i
+            {
+                if(sA[i].compareTo(sA[j]) > 0) // hvis ord på index j er alfabetisk før ord på index i
+                {
+                    temp = sA[i]; // gemmer ord på [i] i temp-variabel (så ordet ikke forsvinder)
+                    sA[i] = sA[j]; // string[i] sættes til string[j], fordi vi er i if'en fordi j kommer først
+                    sA[j] = temp; // string[j] sættes til at være string[i] (temp) for at de to værdier byttes om
+                }
+            }
+        }
+        return sA;
     }
-    
-    
 }

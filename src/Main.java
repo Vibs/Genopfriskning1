@@ -90,8 +90,20 @@ public class Main
         Sorting sorting = new Sorting();
         
         String[] sSA = new String[5];
-        sSA = sorting.sortArrayAlphabetically(sA);
         
+        sSA = sorting.sortArrayAlphabeticallyOmvendt(sA);
+        
+        // sSA = sorting.sortArrayAlphabetically(sA);
+        sorting.printStringArray(sSA);
+    
+        // EXCERCISE 7:
+        System.out.println("\n       EXCERCISE 7\n");
+        
+        Search search = new Search();
+    
+        System.out.println(search.findIndex(sSA, "musefælde"));
+    
+    
     }
     
     
